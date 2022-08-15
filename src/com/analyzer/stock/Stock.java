@@ -13,9 +13,10 @@ public class Stock {
     private double peRatio;
 
     //Creating Constructor
-    public Stock(String ticker, String companyName, double currentPrice, double previousDayPrice, String volume,
-                 String oneYearTargetEst, double fiftyTwoWeekHigh, double fiftyTwoWeekLow,
-                 double eps, double peRatio) {
+    public Stock(String ticker, String companyName, double currentPrice,
+                 double previousDayPrice, String volume,
+                 String oneYearTargetEst, double fiftyTwoWeekHigh,
+                 double fiftyTwoWeekLow, double eps, double peRatio) {
         this.ticker = ticker;
         this.companyName = companyName;
         this.currentPrice = currentPrice;
@@ -112,6 +113,7 @@ public class Stock {
 
     @Override
     public String toString() {
+
         return "Stock{" +
                 "ticker='" + ticker + '\'' +
                 ", companyName='" + companyName + '\'' +
