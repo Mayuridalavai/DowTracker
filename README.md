@@ -1,2 +1,3 @@
 # DowTracker
-Group Three Project 
+Group Three Project
+Hello Group Three 
