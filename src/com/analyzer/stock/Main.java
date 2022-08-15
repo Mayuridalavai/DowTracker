@@ -1,5 +1,12 @@
 package com.analyzer.stock;
 
 class Main {
-    DowAnalyzer stock= new DowAnalyzer();
+
+    public static void main(String[] args) {
+        DowAnalyzer stock= new DowAnalyzer();
+        stock.loadStocksFromTxtFile();
+        System.out.println(stock.getStockList());
+
+    }
+
 }
