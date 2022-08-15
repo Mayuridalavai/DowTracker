@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -30,6 +31,26 @@ class DowAnalyzer {
             e.printStackTrace();
 
         }
+    }
+
+    //Method for searching the stock
+    public Collection<Stock> findStock() {
+        Collection<Stock> result = new ArrayList<>();
+
+        return result;
+    }
+
+    //Method for viewing the top five dow mover
+    public Collection<Stock> topFiveDowMover(){
+        Collection<Stock> result = new ArrayList<>();
+
+        return result;
+    }
+
+    //Method for viewing the top five dow looser
+    public Collection <Stock> topFiveDowLooser(){
+        Collection<Stock> result = new ArrayList<>();
+        return result;
     }
 
 
