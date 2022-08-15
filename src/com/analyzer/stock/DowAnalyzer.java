@@ -17,13 +17,13 @@ class DowAnalyzer {
     //Loading the stocks information from the file
     public void loadStocksFromTxtFile() {
         Pattern pattern = Pattern.compile(",");
-        try (Stream<String> lines = Files.lines(Paths.get("DowTracker/stocksdetails.txt"))) {
+        try (Stream<String> lines = Files.lines(Paths.get("stocksdetails.txt"))) {
             stockList = lines.map(line -> {
                 String[] lineArray = pattern.split(line);
                 return new Stock(lineArray[0], lineArray[1], Double.parseDouble(lineArray[2]),
-                        Integer.parseInt(lineArray[3]),lineArray[4], Double.parseDouble(lineArray[5]),
+                        Double.parseDouble(lineArray[3]), lineArray[4],lineArray[5],
                         Double.parseDouble(lineArray[6]), Double.parseDouble(lineArray[7]),
-                        Double.parseDouble(lineArray[8]));
+                        Double.parseDouble(lineArray[8]), Double.parseDouble(lineArray[9]));
             }).collect(Collectors.toList());
 
         } catch (IOException e) {
