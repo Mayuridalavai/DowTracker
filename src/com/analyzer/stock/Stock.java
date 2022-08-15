@@ -5,7 +5,7 @@ public class Stock {
     private String companyName;
     private double currentPrice;
     private int volume;
-    private double oneYearTargetEst;
+    private String oneYearTargetEst;
     private double fiftyTwoWeekHigh;
     private double fiftyTwoWeekLow;
     private double eps;
@@ -13,7 +13,7 @@ public class Stock {
 
     //Creating Constructor
     public Stock(String ticker, String companyName, double currentPrice, int volume,
-                 double oneYearTargetEst, double fiftyTwoWeekHigh, double fiftyTwoWeekLow,
+                 String oneYearTargetEst, double fiftyTwoWeekHigh, double fiftyTwoWeekLow,
                  double eps, double peRatio) {
         this.ticker = ticker;
         this.companyName = companyName;
@@ -59,11 +59,11 @@ public class Stock {
         this.volume = volume;
     }
 
-    public double getOneYearTargetEst() {
+    public String getOneYearTargetEst() {
         return oneYearTargetEst;
     }
 
-    public void setOneYearTargetEst(double oneYearTargetEst) {
+    public void setOneYearTargetEst(String oneYearTargetEst) {
         this.oneYearTargetEst = oneYearTargetEst;
     }
 
