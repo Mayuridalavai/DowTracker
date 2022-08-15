@@ -4,7 +4,8 @@ public class Stock {
     private String ticker;
     private String companyName;
     private double currentPrice;
-    private int volume;
+    private double previousDayPrice;
+    private String volume;
     private String oneYearTargetEst;
     private double fiftyTwoWeekHigh;
     private double fiftyTwoWeekLow;
@@ -12,12 +13,13 @@ public class Stock {
     private double peRatio;
 
     //Creating Constructor
-    public Stock(String ticker, String companyName, double currentPrice, int volume,
+    public Stock(String ticker, String companyName, double currentPrice, double previousDayPrice, String volume,
                  String oneYearTargetEst, double fiftyTwoWeekHigh, double fiftyTwoWeekLow,
                  double eps, double peRatio) {
         this.ticker = ticker;
         this.companyName = companyName;
         this.currentPrice = currentPrice;
+        this.previousDayPrice=previousDayPrice;
         this.volume = volume;
         this.oneYearTargetEst = oneYearTargetEst;
         this.fiftyTwoWeekHigh = fiftyTwoWeekHigh;
@@ -51,11 +53,19 @@ public class Stock {
         this.currentPrice = currentPrice;
     }
 
-    public int getVolume() {
+    public String getVolume() {
         return volume;
     }
 
-    public void setVolume(int volume) {
+    public double getPreviousDayPrice() {
+        return previousDayPrice;
+    }
+
+    public void setPreviousDayPrice(double previousDayPrice) {
+        this.previousDayPrice = previousDayPrice;
+    }
+
+    public void setVolume(String volume) {
         this.volume = volume;
     }
 
@@ -98,6 +108,7 @@ public class Stock {
     public void setPeRatio(double peRatio) {
         this.peRatio = peRatio;
     }
+
 
     @Override
     public String toString() {
