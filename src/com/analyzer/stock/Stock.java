@@ -124,6 +124,4 @@ public class Stock {
                 ", peRatio=" + peRatio +
                 '}';
     }
-
-
 }
