@@ -23,8 +23,15 @@ class Main {
         System.out.println();
         topFiveMover.forEach(stock1 ->System.out.println(stock1.displayStockInfo()));
 
+        //Top 5 DOW Looser
+        Collection<Stock> topFiveLooser= stock.topFiveDowLooser();
+        System.out.println();
+        topFiveLooser.forEach(stock1 ->System.out.println(stock1.displayStockInfo()));
 
-        //Display All Stocks
+        //Display Detail List of All Stocks
+        System.out.println();
+        System.out.println(stock.getStockList());
+
 
     }
 

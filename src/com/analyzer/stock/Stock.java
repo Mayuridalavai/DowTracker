@@ -119,12 +119,13 @@ public class Stock {
                 ", Volume="+getVolume() +", 1 YR Target Estimate="+ getOneYearTargetEst()+
                 ", Fifty Two Week High=" + getFiftyTwoWeekHigh()+
                 ", Fifty Two Week Low=" + getFiftyTwoWeekLow()+
-                ", EPS="+getEps()+ ", PE Ratio="+ getPeRatio();
+                ", EPS="+getEps()+ ", PE Ratio="+ getPeRatio() +"\n";
 
     }
 
     public String displayStockInfo(){
-        return String.format("Ticker: %s    Company: %s     Current Price: %s      Closing Price:%s", getTicker(), getCompanyName(), getCurrentPrice(), getPreviousDayPrice());
+        return String.format("Ticker: %s    Company: %s     Current Price: %s      Closing Price:%s",
+                getTicker(), getCompanyName(), getCurrentPrice(), getPreviousDayPrice());
 
     }
 }
