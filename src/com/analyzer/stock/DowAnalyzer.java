@@ -52,7 +52,8 @@ class DowAnalyzer {
         return result;
     }
 
-    //Method for showing the Dynamic View of the stock, meaning, the price changes everytime the program is ran
+
+    //Method for showing the Dynamic View of the stock, meaning, the price changes everytime the program runs
     public Collection<Stock> dynamicStockView(){
         Collection<Stock> result= new ArrayList<>();
         for  (Stock stock: stockList){
@@ -73,6 +74,7 @@ class DowAnalyzer {
             result.add(stock);
         }
         return result;
+
     }
 
     //Getter for the private List
