@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -47,8 +48,10 @@ class DowAnalyzer {
 
     //Method for viewing the top five dow mover
     public Collection<Stock> topFiveDowMover() {
-        Collection<Stock> result = new ArrayList<>();
-
+        Collection<Stock> result = stockList.stream()
+                .sorted(Comparator.comparing(Stock::getCurrentPrice).reversed())
+                .limit(5)
+                .collect(Collectors.toList());
         return result;
     }
 
@@ -80,7 +83,6 @@ class DowAnalyzer {
             result.add(stock);
         }
         return result;
-
     }
 
     //Getter for the private List
