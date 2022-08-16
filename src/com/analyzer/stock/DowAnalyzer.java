@@ -34,9 +34,15 @@ class DowAnalyzer {
     }
 
     //Method for searching the stock
-    public Collection<Stock> findStock() {
+    public Collection<Stock> findStock( String ticker) {
         Collection<Stock> result = new ArrayList<>();
-        return result;
+        for(Stock stock: stockList){
+            if(ticker.equalsIgnoreCase(stock.getTicker())|| ticker.equalsIgnoreCase(stock.getCompanyName())){
+                result.add(stock);
+                break;
+            }
+        }
+     return result;
     }
 
     //Method for viewing the top five dow mover
