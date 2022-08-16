@@ -2,8 +2,9 @@ package com.analyzer.stock;
 
 
 class Colors {
+//diewdiwjdiwjdiwjdi
 
-    // Reset
+    // Reset ok
     public static final String RESET = "\033[0m";  // Text Reset
 
     //regular colors
