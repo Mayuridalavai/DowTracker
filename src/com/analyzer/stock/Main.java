@@ -5,6 +5,10 @@ import java.util.Collection;
 class Main {
 
     public static void main(String[] args) {
+        // instantiate the controller and say go
+        FrontPage app = new FrontPage();
+        app.execute();
+
         DowAnalyzer stock= new DowAnalyzer();
         //Loads the stock
         stock.loadStocksFromTxtFile();
