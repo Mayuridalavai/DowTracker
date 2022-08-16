@@ -110,20 +110,21 @@ public class Stock {
         this.peRatio = peRatio;
     }
 
-
     @Override
     public String toString() {
+        return "Ticker=" +getTicker() +
+                ", Company="+ getCompanyName()+
+                ", Current Price="+ getCurrentPrice()+
+                ", Previous Day Price="+ getPreviousDayPrice()+
+                ", Volume="+getVolume() +", 1 YR Target Estimate="+ getOneYearTargetEst()+
+                ", Fifty Two Week High=" + getFiftyTwoWeekHigh()+
+                ", Fifty Two Week Low=" + getFiftyTwoWeekLow()+
+                ", EPS="+getEps()+ ", PE Ratio="+ getPeRatio();
 
-        return "Stock{" +
-                "ticker='" + ticker + '\'' +
-                ", companyName='" + companyName + '\'' +
-                ", currentPrice=" + currentPrice +
-                ", volume=" + volume +
-                ", oneYearTargetEst=" + oneYearTargetEst +
-                ", fiftyTwoWeekHigh=" + fiftyTwoWeekHigh +
-                ", fiftyTwoWeekLow=" + fiftyTwoWeekLow +
-                ", eps=" + eps +
-                ", peRatio=" + peRatio +
-                '}';
+    }
+
+    public String displayStockInfo(){
+        return String.format("Ticker: %s    Company: %s     Current Price: %s      Closing Price:%s", getTicker(), getCompanyName(), getCurrentPrice(), getPreviousDayPrice());
+
     }
 }
