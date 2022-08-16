@@ -1,10 +1,12 @@
 package com.analyzer.stock;
+
 import java.util.Collection;
 import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class DisplayPage {
     Colors colors = new Colors();
+
     public void execute() {
         welcome();
         menu();
@@ -41,106 +43,44 @@ public class DisplayPage {
         //System.out.println("\n" + "\n" + "\n" + "\n" + "$░▒▓▆▅▃▂▁" + Colors.PURPLE_BRIGHT + "\uD835\uDC13\uD835\uDC21\uD835\uDC1A\uD835\uDC27\uD835\uDC24 \uD835\uDC32\uD835\uDC28\uD835\uDC2E \uD835\uDC1F\uD835\uDC28\uD835\uDC2B \uD835\uDC1C\uD835\uDC21\uD835\uDC28\uD835\uDC28\uD835\uDC2C\uD835\uDC22\uD835\uDC27\uD835\uDC20 \uD835\uDC28\uD835\uDC2E\uD835\uDC2B \uD835\uDC01\uD835\uDC12 \uD835\uDC13\uD835\uDC2B\uD835\uDC1A\uD835\uDC1C\uD835\uDC24\uD835\uDC1E\uD835\uDC2B" + Colors.GREEN_BOLD_BRIGHT + "▁▂▃▅▆▓▒░$");
 
     }
+
     private void inputLogic() {
-        Scanner input = new Scanner(System.in);
+
+        Scanner scanner = new Scanner(System.in);
         boolean userInput = true;
-        int number = input.nextInt();
-
+        int number = 0;
         while (userInput) {
-            if (!(number >= 1 && number <= 6)) {
-                System.out.println("Invalid options selected, your options are [1-6]. Please select again!");
-                number = input.nextInt();
-            } else {
-                if (number == 1) {
-                    System.out.println("Hello Gaurav");
-                    System.out.println("Please select your options");
-                    number = input.nextInt();
-                }
-                if (number == 2) {
+            String input = scanner.nextLine().trim();
+            if (input.matches("\\d{1}")) {
+                number = Integer.parseInt(input);
+                if (!(number >= 1 && number <= 6)) {
+                    System.out.println("Invalid options selected, your options are [1-6]. Please select again!");
+                } else {
+                    if (number == 1) {
+                        System.out.println("Hello Gaurav");
+                        System.out.println("Please select your options");
+                    }
+                    if (number == 2) {
 
-                }
-                if (number==3){
+                    }
+                    if (number == 3) {
 
-                }
-                if (number==4){
+                    }
+                    if (number == 4) {
 
-                }
-                if (number==5){
+                    }
+                    if (number == 5) {
 
+                    }
+                    if (number == 6) {
+                        System.out.println("Quitting the application...");
+                        userInput = false;
+                    }
                 }
-                if(number==6){
-                    System.out.println("Quitting the application...");
-                    userInput= false;
-                }
+            }else{
+                System.out.println("Please, enter the valid Integer");
             }
         }
+
     }
-
-
-
-
-//
-//    private void main() {
-//        Scanner scanner = new Scanner(System.in); //console input
-//        int option = 1;
-//        while (option != 5) {//!= es diferente
-//            //menu();
-//
-//            try {
-//                option = scanner.nextInt(); //by utilizing this can possibly give me an error if number not used
-//                switch (option) {
-//                    case 1:
-//                        option1();
-//                        break;
-//                    case 2:
-//                        option2();
-//                        break;
-//                    case 3:
-//                        option3();
-//                        break;
-//                    case 4:
-//                        option4();
-//                        break;
-//                    case 5:
-//                        //exit(0);
-//                        System.out.println("shutting off");
-//                }
-//            } catch (Exception e) {
-//                System.out.println("Please enter a valid option number");
-//                //scanner.next();
-//            }
-//        }
-//    }
-//
-//    private void option1() {
-//
-//        System.out.print("\033[H\033[2J");
-//        System.out.flush();
-//        System.out.println("search for stock");
-//        Scanner scanner = new Scanner(System.in);
-//        String stock = scanner.nextLine();
-//        System.out.println("Stock Searched: " + stock + "\n\n");
-//        System.out.println("xxxx     xxxx     xxxx     xxxx\n\n");
-//        System.out.println("xxxx     xxxx     xxxx     xxxx\n\n");
-//
-//    }
-//
-//    private void option2() {
-//        System.out.print("\033[H\033[2J");
-//        System.out.flush();
-//        System.out.println("Thanks for choosing option 2\n\n\n\n\n\n\n\n\n\n\n");
-//
-//    }
-//
-//    private void option3() {
-//        System.out.print("\033[H\033[2J");
-//        System.out.flush();
-//        System.out.println("Thanks for choosing option 3\n\n\n\n\n\n\n\n\n\n\n");
-//    }
-//
-//    private void option4() {
-//        System.out.print("\033[H\033[2J");
-//        System.out.flush();
-//        System.out.println("Thanks for choosing option 4");
-//    }
 }
