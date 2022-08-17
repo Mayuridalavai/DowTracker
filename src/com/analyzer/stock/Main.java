@@ -43,7 +43,9 @@ class Main {
                             topFiveLooser.forEach(stock1 -> System.out.println(stock1.displayStockInfo()));
                             break;
                         case 5:
-                            System.out.println("Quitting the application......");
+                            System.out.print("\033[H\033[2J");
+                            System.out.flush();
+                            System.out.println("\033[0;92m"+"$░▒▓▆▅▃▂▁" +"THANK YOU FOR CHOOSING BS TRACKER"+ "▁▂▃▅▆▓▒░$");
                             userInput = false;
                             break;
                     }
