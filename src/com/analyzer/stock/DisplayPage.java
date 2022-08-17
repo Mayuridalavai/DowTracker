@@ -21,7 +21,7 @@ public class DisplayPage {
                     .forEach(line -> System.out.println("\033[0;92m"+line)
 
                     );
-        } catch (Exception e) {// Catch exception if any
+        } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
         }    }
 
