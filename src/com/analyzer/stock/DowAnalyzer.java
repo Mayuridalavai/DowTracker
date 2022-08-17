@@ -16,11 +16,12 @@ public class DowAnalyzer {
 
     //Declaring List variable
     private List<Stock> stockList = new ArrayList<>();
+    private final int rangeVariable=5;
 
     //Loading the stocks information from the file
     public void loadStocksFromTxtFile() {
         Pattern pattern = Pattern.compile(",");
-        try (Stream<String> lines = Files.lines(Paths.get("config","stocksdetails.txt"))) {
+        try (Stream<String> lines = Files.lines(Paths.get("config", "stocksdetails.txt"))) {
             stockList = lines.map(line -> {
                 String[] lineArray = pattern.split(line);
                 return new Stock(lineArray[0], lineArray[1], Double.parseDouble(lineArray[2]),
@@ -42,17 +43,9 @@ public class DowAnalyzer {
             if (ticker.equalsIgnoreCase(stock.getTicker()) || ticker.equalsIgnoreCase(stock.getCompanyName())) {
                 result.add(stock);
             }
-//          if  (!(ticker.equalsIgnoreCase(stock.getTicker())) || !(ticker.equalsIgnoreCase(stock.getCompanyName()))){
-//
-//              System.out.println("The stock is not listed in DOW 30. Please go to option 1 and make new search");
-//              break;
-//
-//
-//            }
-            else{
-                              System.out.println("The stock is not listed in DOW 30. Please go to option 1 and make new search");
-
-            }
+        }
+        if(result.isEmpty()){
+            System.out.println("The stock is not listed in DOW30. Please go to option 1 and make new search");
         }
         return result;
     }
@@ -81,7 +74,7 @@ public class DowAnalyzer {
         Collection<Stock> result = new ArrayList<>();
         for (Stock stock : stockList) {
             //Generate random number from +5-5
-            double randomNumber = Math.round((Math.random() * (5 + 5)) - 5);
+            double randomNumber = Math.round((Math.random() * (rangeVariable + rangeVariable)) - rangeVariable);
             double price = stock.getCurrentPrice();
             //Set the current price of stock to sum of current price and random number from +5 to -5
             stock.setCurrentPrice(randomNumber + price);

@@ -94,12 +94,11 @@ public class DisplayPage {
 //        dynamicStock.forEach(stock1 -> System.out.println(stock1.displayStockInfo()));
 //    }
     public void mainMenu(){
-        //int selection = 0;
         System.out.println("\033[1;92m");
         System.out.println("[1] Search for Stock\n" +
                 "[2] Display List of Dow 30 Stocks\n" +
-                "[3] Top Five DOW/ Market Mover\n" +
-                "[4] Top Five DOW/ Market Looser\n" +
+                "[3] Top Five DOW Mover\n" +
+                "[4] Top Five DOW Looser\n" +
                 "[5] - Quit\n");
         System.out.println("\033[1;97m" + "Please select your options: ");
 
