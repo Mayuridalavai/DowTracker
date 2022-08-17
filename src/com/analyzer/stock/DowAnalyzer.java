@@ -15,14 +15,15 @@ import java.util.stream.Stream;
 public class DowAnalyzer {
 
     //Declaring List variable
-    private List<Stock> stockList = new ArrayList<>();
+    private List<Stock> stockList= loadStocksFromTxtFile();
     private final int rangeVariable=5;
 
     //Loading the stocks information from the file
-    public void loadStocksFromTxtFile() {
+    private List<Stock> loadStocksFromTxtFile() {
+        List<Stock> result=null;
         Pattern pattern = Pattern.compile(",");
         try (Stream<String> lines = Files.lines(Paths.get("config", "stocksdetails.txt"))) {
-            stockList = lines.map(line -> {
+            result = lines.map(line -> {
                 String[] lineArray = pattern.split(line);
                 return new Stock(lineArray[0], lineArray[1], Double.parseDouble(lineArray[2]),
                         Double.parseDouble(lineArray[3]), lineArray[4], lineArray[5],
@@ -34,6 +35,7 @@ public class DowAnalyzer {
             e.printStackTrace();
 
         }
+        return result;
     }
 
     //Method for searching the stock

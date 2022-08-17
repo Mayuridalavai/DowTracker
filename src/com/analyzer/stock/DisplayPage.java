@@ -7,23 +7,26 @@ import java.util.Scanner;
 
 public class DisplayPage {
 
-    DowAnalyzer analyzer = new DowAnalyzer();
+    private DowAnalyzer analyzer = new DowAnalyzer();
+    private Scanner scanner = new Scanner(System.in);
+
     public void execute() {
         welcome();
         menu();
-        //inputLogic();
+        inputLogic();
     }
 
     private void welcome() {
         try {
-            String banner = Files.readString(Path.of("resource","welcome.txt"));
-            Files.lines(Path.of( "resource","welcome.txt"))
-                    .forEach(line -> System.out.println("\033[0;92m"+line)
+            String banner = Files.readString(Path.of("resource", "welcome.txt"));
+            Files.lines(Path.of("resource", "welcome.txt"))
+                    .forEach(line -> System.out.println("\033[0;92m" + line)
 
                     );
         } catch (Exception e) {
             System.err.println("Error: " + e.getMessage());
-        }    }
+        }
+    }
 
     private void menu() {
         //Scanner scanner = new Scanner(System.in); //console input
@@ -31,69 +34,80 @@ public class DisplayPage {
                 "| MENU OPTIONS |\n" +
                 "'--------------'");
         mainMenu();
-
     }
-//    private void inputLogic() {
-//        Scanner scanner = new Scanner(System.in);
-//        boolean userInput = true;
-//        int number = 0;
-//        while (userInput) {
-//            String input = scanner.nextLine().trim();
-//            if (input.matches("\\d{1}")) {
-//                number = Integer.parseInt(input);
-//                if (!(number >= 1 && number <= 6)) {
-//                    System.out.println("Invalid options selected, your options are [1-6]. Please select again!");
-//                } else {
-//                    for(number=1; number<6; number++){
-//                        switch (number){
-//                            case 1:
-//                                findStock();
-//                                break;
-//                            case 2:
-//                                displayAllStocks();
-//                                break;
-//                            case 3:
-//                                topFiveDowMover();
-//                                break;
-//                            case 4:
-//                                topFiveDowLooser();
-//                                break;
-//                            case 5:
-//                                displayDynamicView();
-//                                break;
-//                            case 6:
-//                                System.out.println("Quitting the application......");
-//                                userInput=false;
-//                                break;
-//                        }
-//                    }
-//                }
-//            }else{
-//                System.out.println("Please, enter the valid Integer");
-//            }
-//        }
-//    }
-//
-//    public void findStock(){
-//        Collection<Stock> findStock= analyzer.findStock("AAPl");
-//        findStock.forEach(stock1-> System.out.println(stock1.displayStockInfo()));
-//    }
-//    public void displayAllStocks(){
-//        System.out.println(analyzer.getStockList());
-//    }
-//    public void topFiveDowMover(){
-//        Collection<Stock> topFiveMover= analyzer.topFiveDowMover();
-//        topFiveMover.forEach(stock1 ->System.out.println(stock1.displayStockInfo()));
-//    }
-//    public void topFiveDowLooser(){
-//        Collection<Stock> topFiveLooser= analyzer.topFiveDowLooser();
-//        topFiveLooser.forEach(stock1 ->System.out.println(stock1.displayStockInfo()));
-//    }
-//    public void displayDynamicView(){
-//        Collection <Stock> dynamicStock= analyzer.dynamicStockView();
-//        dynamicStock.forEach(stock1 -> System.out.println(stock1.displayStockInfo()));
-//    }
-    public void mainMenu(){
+
+    private void inputLogic() {
+        boolean validInput = true;
+        int number = 0;
+        while (validInput) {
+            String input = scanner.nextLine().trim();
+            if (input.matches("\\d{1}")) {
+                number = Integer.parseInt(input);
+                if (!(number >= 1 && number <= 5)) {
+                } else {
+                    switch (number) {
+                        case 1:
+                            System.out.println("Enter the Ticker or Company name.");
+                            String ticker = scanner.nextLine();
+                            Collection<Stock> findStock = analyzer.findStock(ticker);
+                            findStock.forEach(stock1 -> System.out.println(stock1.displayStockInfo()));
+                            mainMenu();
+                            break;
+                        case 2:
+                            Collection<Stock> dynamicStock = analyzer.dynamicStockView();
+                            dynamicStock.forEach(stock1 -> System.out.println(stock1.displayStockInfo()));
+                            mainMenu();
+                            break;
+                        case 3:
+                            Collection<Stock> topFiveMover = analyzer.topFiveDowMover();
+                            topFiveMover.forEach(stock1 -> System.out.println(stock1.displayStockInfo()));
+                            mainMenu();
+                            break;
+                        case 4:
+                            Collection<Stock> topFiveLooser = analyzer.topFiveDowLooser();
+                            topFiveLooser.forEach(stock1 -> System.out.println(stock1.displayStockInfo()));
+                            mainMenu();
+                            break;
+                        case 5:
+                            System.out.print("\033[H\033[2J");
+                            System.out.flush();
+                            System.out.println("\033[0;92m" + "$░▒▓▆▅▃▂▁" + "THANK YOU FOR CHOOSING BS TRACKER" + "▁▂▃▅▆▓▒░$");
+                            validInput = false;
+                            break;
+                    }
+                }
+            } else {
+                System.out.println("Invalid options selected, your options are [1-6]. Please select again!");
+            }
+        }
+    }
+
+    public void findStock() {
+        System.out.println("Enter the Ticker or Company name.");
+        String ticker = scanner.nextLine();
+        Collection<Stock> findStock = analyzer.findStock(ticker);
+        findStock.forEach(stock1 -> System.out.println(stock1.displayStockInfo()));
+        mainMenu();
+    }
+
+    public void topFiveDowMover() {
+        Collection<Stock> topFiveMover = analyzer.topFiveDowMover();
+        topFiveMover.forEach(stock1 -> System.out.println(stock1.displayStockInfo()));
+        mainMenu();
+    }
+
+    public void topFiveDowLooser() {
+        Collection<Stock> topFiveLooser = analyzer.topFiveDowLooser();
+        topFiveLooser.forEach(stock1 -> System.out.println(stock1.displayStockInfo()));
+        mainMenu();
+    }
+
+    public void displayDynamicView() {
+        Collection<Stock> dynamicStock = analyzer.dynamicStockView();
+        dynamicStock.forEach(stock1 -> System.out.println(stock1.displayStockInfo()));
+    }
+
+    public void mainMenu() {
         System.out.println("\033[1;92m");
         System.out.println("[1] Search for Stock\n" +
                 "[2] Display List of Dow 30 Stocks\n" +
@@ -101,6 +115,5 @@ public class DisplayPage {
                 "[4] Top Five DOW Looser\n" +
                 "[5] - Quit\n");
         System.out.println("\033[1;97m" + "Please select your options: ");
-
     }
 }
