@@ -41,9 +41,18 @@ public class DowAnalyzer {
         for (Stock stock : stockList) {
             if (ticker.equalsIgnoreCase(stock.getTicker()) || ticker.equalsIgnoreCase(stock.getCompanyName())) {
                 result.add(stock);
-                break;
             }
+//          if  (!(ticker.equalsIgnoreCase(stock.getTicker())) || !(ticker.equalsIgnoreCase(stock.getCompanyName()))){
+//
+//              System.out.println("The stock is not listed in DOW 30. Please go to option 1 and make new search");
+//              break;
+//
+//
+//            }
+            else{
+                              System.out.println("The stock is not listed in DOW 30. Please go to option 1 and make new search");
 
+            }
         }
         return result;
     }
