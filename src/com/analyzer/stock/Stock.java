@@ -123,9 +123,11 @@ public class Stock {
 
     }
 
-    public String displayStockInfo(){
-        return String.format("Ticker: %s    Company: %s     Current Price: %s      Closing Price:%s",
-                getTicker(), getCompanyName(), getCurrentPrice(), getPreviousDayPrice());
+    public String displayStockInfo() {
+        return String.format("Ticker: %s    Company: %s     Current Price: %s      Closing Price:%s       Volume:%s" +
+                        "     One YR TGT Estimate:%s        EPS:%s         PE Ratio:%s       ",
+                getTicker(), getCompanyName(), getCurrentPrice(), getPreviousDayPrice(), getVolume(), getOneYearTargetEst()
+                , getEps(), getPeRatio());
 
     }
 }

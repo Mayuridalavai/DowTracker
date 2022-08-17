@@ -3,6 +3,7 @@ package com.analyzer.stock;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
@@ -11,7 +12,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-class DowAnalyzer {
+public class DowAnalyzer {
 
     //Declaring List variable
     private List<Stock> stockList = new ArrayList<>();
@@ -40,8 +41,11 @@ class DowAnalyzer {
         for (Stock stock : stockList) {
             if (ticker.equalsIgnoreCase(stock.getTicker()) || ticker.equalsIgnoreCase(stock.getCompanyName())) {
                 result.add(stock);
-                break;
             }
+             if (!ticker.equalsIgnoreCase(stock.getTicker())){
+                 System.out.println("hello");
+                 break;
+             }
         }
         return result;
     }
