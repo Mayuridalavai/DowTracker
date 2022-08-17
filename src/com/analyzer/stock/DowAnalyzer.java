@@ -20,7 +20,7 @@ public class DowAnalyzer {
     //Loading the stocks information from the file
     public void loadStocksFromTxtFile() {
         Pattern pattern = Pattern.compile(",");
-        try (Stream<String> lines = Files.lines(Paths.get("stocksdetails.txt"))) {
+        try (Stream<String> lines = Files.lines(Paths.get("config","stocksdetails.txt"))) {
             stockList = lines.map(line -> {
                 String[] lineArray = pattern.split(line);
                 return new Stock(lineArray[0], lineArray[1], Double.parseDouble(lineArray[2]),
@@ -41,11 +41,9 @@ public class DowAnalyzer {
         for (Stock stock : stockList) {
             if (ticker.equalsIgnoreCase(stock.getTicker()) || ticker.equalsIgnoreCase(stock.getCompanyName())) {
                 result.add(stock);
+                break;
             }
-             if (!ticker.equalsIgnoreCase(stock.getTicker())){
-                 System.out.println("hello");
-                 break;
-             }
+
         }
         return result;
     }

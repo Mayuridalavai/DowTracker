@@ -1,5 +1,7 @@
 package com.analyzer.stock;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Collection;
 import java.util.Scanner;
 
@@ -13,32 +15,29 @@ public class DisplayPage {
     }
 
     private void welcome() {
-        System.out.println(
-                Colors.RED_BOLD_BRIGHT + "╔╗╔╗╔╗    ╔╗                     ╔════╗        ╔══╗ ╔═══╗    ╔═══╗╔═══╗╔╗╔╗╔╗    ╔╗  ╔╗                   \n" +
-                        Colors.YELLOW + "║║║║║║    ║║                     ║╔╗╔╗║        ║╔╗║ ║╔═╗║    ╚╗╔╗║║╔═╗║║║║║║║    ║╚╗╔╝║                   \n" +
-                        Colors.YELLOW_BOLD_BRIGHT + "║║║║║║╔══╗║║ ╔══╗╔══╗╔╗╔╗╔══╗    ╚╝║║╚╝╔══╗    ║╚╝╚╗║╚══╗     ║║║║║║ ║║║║║║║║    ╚╗║║╔╝╔╗╔══╗╔╗╔╗╔╗╔══╗╔═╗\n" +
-                        Colors.GREEN_BOLD_BRIGHT + "║╚╝╚╝║║╔╗║║║ ║╔═╝║╔╗║║╚╝║║╔╗║      ║║  ║╔╗║    ║╔═╗║╚══╗║     ║║║║║║ ║║║╚╝╚╝║     ║╚╝║ ╠╣║╔╗║║╚╝╚╝║║╔╗║║╔╝\n" +
-                        Colors.CYAN_BOLD_BRIGHT + "╚╗╔╗╔╝║║═╣║╚╗║╚═╗║╚╝║║║║║║║═╣     ╔╝╚╗ ║╚╝║    ║╚═╝║║╚═╝║    ╔╝╚╝║║╚═╝║╚╗╔╗╔╝     ╚╗╔╝ ║║║║═╣╚╗╔╗╔╝║║═╣║║ \n" +
-                        Colors.BLUE_BOLD_BRIGHT + " ╚╝╚╝ ╚══╝╚═╝╚══╝╚══╝╚╩╩╝╚══╝     ╚══╝ ╚══╝    ╚═══╝╚═══╝    ╚═══╝╚═══╝ ╚╝╚╝       ╚╝  ╚╝╚══╝ ╚╝╚╝ ╚══╝╚╝ \n" +
-                        Colors.PURPLE_BOLD_BRIGHT + "<$><$><$><$><$><$><$><$><$><$><$><$><$><$><$><$><$><$><$><$><$><$><$><$><$><$><$><$><$><$><$><$><$><$><$>\n");
+        try {
+            String banner = Files.readString(Path.of("resource","welcome.txt"));
+            Files.lines(Path.of( "resource","welcome.txt"))
+                    .forEach(line -> System.out.println("\033[0;92m"+line)
 
-        System.out.println(Colors.YELLOW_UNDERLINED + Colors.YELLOW_BOLD_BRIGHT);
-        System.out.println("\uD835\uDC7B\uD835\uDC76\uD835\uDC6B\uD835\uDC68\uD835\uDC80\"\uD835\uDC7A \uD835\uDC74\uD835\uDC68\uD835\uDC79\uD835\uDC72\uD835\uDC6C\uD835\uDC7B \uD835\uDC7A\uD835\uDC75\uD835\uDC68\uD835\uDC77\uD835\uDC7A\uD835\uDC6F\uD835\uDC76\uD835\uDC7B\n");
-    }
+                    );
+        } catch (Exception e) {// Catch exception if any
+            System.err.println("Error: " + e.getMessage());
+        }    }
 
     private void menu() {
         //Scanner scanner = new Scanner(System.in); //console input
-        System.out.println(Colors.BLUE + ".--------------.\n" +
+        System.out.println("\033[0;34m" + ".--------------.\n" +
                 "| MENU OPTIONS |\n" +
                 "'--------------'");
-        System.out.println(Colors.GREEN_BOLD_BRIGHT);
+        System.out.println("\033[1;92m");
         //int selection = 0;
         System.out.println("[1] Search for Stock\n" +
                 "[2] Display List of Dow 30 Stocks\n" +
                 "[3] Top Five DOW/ Market Mover\n" +
                 "[4] Top Five DOW/ Market Looser\n" +
                 "[x] - Quit\n\n");
-        System.out.println(Colors.WHITE_BOLD_BRIGHT + "please select you option: ");
+        System.out.println("\033[1;97m" + "please select you option: ");
         //System.out.println("\n" + "\n" + "\n" + "\n" + "$░▒▓▆▅▃▂▁" + Colors.PURPLE_BRIGHT + "\uD835\uDC13\uD835\uDC21\uD835\uDC1A\uD835\uDC27\uD835\uDC24 \uD835\uDC32\uD835\uDC28\uD835\uDC2E \uD835\uDC1F\uD835\uDC28\uD835\uDC2B \uD835\uDC1C\uD835\uDC21\uD835\uDC28\uD835\uDC28\uD835\uDC2C\uD835\uDC22\uD835\uDC27\uD835\uDC20 \uD835\uDC28\uD835\uDC2E\uD835\uDC2B \uD835\uDC01\uD835\uDC12 \uD835\uDC13\uD835\uDC2B\uD835\uDC1A\uD835\uDC1C\uD835\uDC24\uD835\uDC1E\uD835\uDC2B" + Colors.GREEN_BOLD_BRIGHT + "▁▂▃▅▆▓▒░$");
 
     }
