@@ -1,4 +1,4 @@
-package com.analyzer.stock;
+package com.analyzer.model;
 
 public class Stock {
     private String ticker;
@@ -17,16 +17,17 @@ public class Stock {
                  double previousDayPrice, String volume,
                  String oneYearTargetEst, double fiftyTwoWeekHigh,
                  double fiftyTwoWeekLow, double eps, double peRatio) {
-        this.ticker = ticker;
-        this.companyName = companyName;
-        this.currentPrice = currentPrice;
-        this.previousDayPrice=previousDayPrice;
-        this.volume = volume;
-        this.oneYearTargetEst = oneYearTargetEst;
-        this.fiftyTwoWeekHigh = fiftyTwoWeekHigh;
+        setTicker(ticker);
+        setCompanyName(companyName);
+        setCurrentPrice(currentPrice);
+        setPreviousDayPrice(previousDayPrice);
+        setVolume(volume);
+        setOneYearTargetEst(oneYearTargetEst);
+        setEps(eps);
+        setPeRatio(peRatio);
         this.fiftyTwoWeekLow = fiftyTwoWeekLow;
-        this.eps = eps;
-        this.peRatio = peRatio;
+        this.fiftyTwoWeekHigh = fiftyTwoWeekHigh;
+
     }
 
     //Creating Getter and Setter
@@ -78,22 +79,6 @@ public class Stock {
         this.oneYearTargetEst = oneYearTargetEst;
     }
 
-    public double getFiftyTwoWeekHigh() {
-        return fiftyTwoWeekHigh;
-    }
-
-    public void setFiftyTwoWeekHigh(double fiftyTwoWeekHigh) {
-        this.fiftyTwoWeekHigh = fiftyTwoWeekHigh;
-    }
-
-    public double getFiftyTwoWeekLow() {
-        return fiftyTwoWeekLow;
-    }
-
-    public void setFiftyTwoWeekLow(double fiftyTwoWeekLow) {
-        this.fiftyTwoWeekLow = fiftyTwoWeekLow;
-    }
-
     public double getEps() {
         return eps;
     }
@@ -110,24 +95,10 @@ public class Stock {
         this.peRatio = peRatio;
     }
 
-    @Override
-    public String toString() {
-        return "Ticker=" +getTicker() +
-                ", Company="+ getCompanyName()+
-                ", Current Price="+ getCurrentPrice()+
-                ", Previous Day Price="+ getPreviousDayPrice()+
-                ", Volume="+getVolume() +", 1 YR Target Estimate="+ getOneYearTargetEst()+
-                ", Fifty Two Week High=" + getFiftyTwoWeekHigh()+
-                ", Fifty Two Week Low=" + getFiftyTwoWeekLow()+
-                ", EPS="+getEps()+ ", PE Ratio="+ getPeRatio() +"\n";
-
-    }
-
     public String displayStockInfo() {
         return String.format("Ticker: %s    Company: %s     Current Price: %s      Closing Price:%s       Volume:%s" +
                         "     One YR TGT Estimate:%s        EPS:%s         PE Ratio:%s       ",
                 getTicker(), getCompanyName(), getCurrentPrice(), getPreviousDayPrice(), getVolume(), getOneYearTargetEst()
                 , getEps(), getPeRatio());
-
     }
 }
