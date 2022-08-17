@@ -1,7 +1,6 @@
-package com.analyzer.stock;
+package com.analyzer.client;
 
-import java.util.Collection;
-import java.util.Scanner;
+import com.analyzer.controller.DisplayPage;
 
 class Main {
 

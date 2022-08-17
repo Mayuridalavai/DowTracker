@@ -1,9 +1,8 @@
-package com.analyzer.stock;
+package com.analyzer.model;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
@@ -15,12 +14,12 @@ import java.util.stream.Stream;
 public class DowAnalyzer {
 
     //Declaring List variable
-    private List<Stock> stockList= loadStocksFromTxtFile();
-    private final int rangeVariable=5;
+    private List<Stock> stockList = loadStocksFromTxtFile();
+    private final int rangeVariable = 5;
 
     //Loading the stocks information from the file
     private List<Stock> loadStocksFromTxtFile() {
-        List<Stock> result=null;
+        List<Stock> result = null;
         Pattern pattern = Pattern.compile(",");
         try (Stream<String> lines = Files.lines(Paths.get("config", "stocksdetails.txt"))) {
             result = lines.map(line -> {
@@ -46,7 +45,7 @@ public class DowAnalyzer {
                 result.add(stock);
             }
         }
-        if(result.isEmpty()){
+        if (result.isEmpty()) {
             System.out.println("The stock is not listed in DOW30. Please go to option 1 and make new search");
         }
         return result;
@@ -70,7 +69,6 @@ public class DowAnalyzer {
         return result;
     }
 
-
     //Method for showing the Dynamic View of the stock, meaning, the price changes everytime the program runs
     public Collection<Stock> dynamicStockView() {
         Collection<Stock> result = new ArrayList<>();
@@ -91,10 +89,5 @@ public class DowAnalyzer {
             result.add(stock);
         }
         return result;
-    }
-
-    //Getter for the private List
-    public List<Stock> getStockList() {
-        return stockList;
     }
 }

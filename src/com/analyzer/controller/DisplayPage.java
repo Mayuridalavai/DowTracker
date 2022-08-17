@@ -1,4 +1,7 @@
-package com.analyzer.stock;
+package com.analyzer.controller;
+
+import com.analyzer.model.DowAnalyzer;
+import com.analyzer.model.Stock;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -82,7 +85,7 @@ public class DisplayPage {
         }
     }
 
-    public void findStock() {
+    private void findStock() {
         System.out.println("Enter the Ticker or Company name.");
         String ticker = scanner.nextLine();
         Collection<Stock> findStock = analyzer.findStock(ticker);
@@ -90,24 +93,24 @@ public class DisplayPage {
         mainMenu();
     }
 
-    public void topFiveDowMover() {
+    private void topFiveDowMover() {
         Collection<Stock> topFiveMover = analyzer.topFiveDowMover();
         topFiveMover.forEach(stock1 -> System.out.println(stock1.displayStockInfo()));
         mainMenu();
     }
 
-    public void topFiveDowLooser() {
+    private void topFiveDowLooser() {
         Collection<Stock> topFiveLooser = analyzer.topFiveDowLooser();
         topFiveLooser.forEach(stock1 -> System.out.println(stock1.displayStockInfo()));
         mainMenu();
     }
 
-    public void displayDynamicView() {
+    private void displayDynamicView() {
         Collection<Stock> dynamicStock = analyzer.dynamicStockView();
         dynamicStock.forEach(stock1 -> System.out.println(stock1.displayStockInfo()));
     }
 
-    public void mainMenu() {
+    private void mainMenu() {
         System.out.println("\033[1;92m");
         System.out.println("[1] Search for Stock\n" +
                 "[2] Display List of Dow 30 Stocks\n" +
