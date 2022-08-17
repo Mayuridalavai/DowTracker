@@ -30,15 +30,7 @@ public class DisplayPage {
         System.out.println("\033[0;34m" + ".--------------.\n" +
                 "| MENU OPTIONS |\n" +
                 "'--------------'");
-        System.out.println("\033[1;92m");
-        //int selection = 0;
-        System.out.println("[1] Search for Stock\n" +
-                "[2] Display List of Dow 30 Stocks\n" +
-                "[3] Top Five DOW/ Market Mover\n" +
-                "[4] Top Five DOW/ Market Looser\n" +
-                "[x] - Quit\n\n");
-        System.out.println("\033[1;97m" + "please select you option: ");
-        //System.out.println("\n" + "\n" + "\n" + "\n" + "$░▒▓▆▅▃▂▁" + Colors.PURPLE_BRIGHT + "\uD835\uDC13\uD835\uDC21\uD835\uDC1A\uD835\uDC27\uD835\uDC24 \uD835\uDC32\uD835\uDC28\uD835\uDC2E \uD835\uDC1F\uD835\uDC28\uD835\uDC2B \uD835\uDC1C\uD835\uDC21\uD835\uDC28\uD835\uDC28\uD835\uDC2C\uD835\uDC22\uD835\uDC27\uD835\uDC20 \uD835\uDC28\uD835\uDC2E\uD835\uDC2B \uD835\uDC01\uD835\uDC12 \uD835\uDC13\uD835\uDC2B\uD835\uDC1A\uD835\uDC1C\uD835\uDC24\uD835\uDC1E\uD835\uDC2B" + Colors.GREEN_BOLD_BRIGHT + "▁▂▃▅▆▓▒░$");
+        mainMenu();
 
     }
 //    private void inputLogic() {
@@ -101,5 +93,15 @@ public class DisplayPage {
 //        Collection <Stock> dynamicStock= analyzer.dynamicStockView();
 //        dynamicStock.forEach(stock1 -> System.out.println(stock1.displayStockInfo()));
 //    }
+    public void mainMenu(){
+        //int selection = 0;
+        System.out.println("\033[1;92m");
+        System.out.println("[1] Search for Stock\n" +
+                "[2] Display List of Dow 30 Stocks\n" +
+                "[3] Top Five DOW/ Market Mover\n" +
+                "[4] Top Five DOW/ Market Looser\n" +
+                "[5] - Quit\n");
+        System.out.println("\033[1;97m" + "Please select your options: ");
 
+    }
 }

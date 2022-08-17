@@ -21,7 +21,6 @@ class Main {
             if (input.matches("\\d{1}")) {
                 number = Integer.parseInt(input);
                 if (!(number >= 1 && number <= 5)) {
-                    System.out.println("Invalid options selected, your options are [1-6]. Please select again!");
                 } else {
                     switch (number) {
                         case 1:
@@ -29,18 +28,22 @@ class Main {
                             String ticker= scanner.nextLine();
                             Collection<Stock> findStock = analyzer.findStock(ticker);
                             findStock.forEach(stock1 -> System.out.println(stock1.displayStockInfo()));
+                            app.mainMenu();
                             break;
                         case 2:
                             Collection<Stock> dynamicStock = analyzer.dynamicStockView();
                             dynamicStock.forEach(stock1 -> System.out.println(stock1.displayStockInfo()));
+                            app.mainMenu();
                             break;
                         case 3:
                             Collection<Stock> topFiveMover = analyzer.topFiveDowMover();
                             topFiveMover.forEach(stock1 -> System.out.println(stock1.displayStockInfo()));
+                            app.mainMenu();
                             break;
                         case 4:
                             Collection<Stock> topFiveLooser = analyzer.topFiveDowLooser();
                             topFiveLooser.forEach(stock1 -> System.out.println(stock1.displayStockInfo()));
+                            app.mainMenu();
                             break;
                         case 5:
                             System.out.print("\033[H\033[2J");
@@ -51,7 +54,7 @@ class Main {
                     }
                 }
             } else {
-                System.out.println("Please, enter the valid Integer");
+                System.out.println("Invalid options selected, your options are [1-6]. Please select again!");
             }
         }
     }
