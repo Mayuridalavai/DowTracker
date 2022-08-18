@@ -50,26 +50,16 @@ public class DisplayPage {
                 } else {
                     switch (number) {
                         case 1:
-                            System.out.println("Enter the Ticker or Company name.");
-                            String ticker = scanner.nextLine();
-                            Collection<Stock> findStock = analyzer.findStock(ticker);
-                            findStock.forEach(stock1 -> System.out.println(stock1.displayStockInfo()));
-                            mainMenu();
+                            findStock();
                             break;
                         case 2:
-                            Collection<Stock> dynamicStock = analyzer.dynamicStockView();
-                            dynamicStock.forEach(stock1 -> System.out.println(stock1.displayStockInfo()));
-                            mainMenu();
+                            displayDynamicView();
                             break;
                         case 3:
-                            Collection<Stock> topFiveMover = analyzer.topFiveDowMover();
-                            topFiveMover.forEach(stock1 -> System.out.println(stock1.displayStockInfo()));
-                            mainMenu();
+                            topFiveDowMover();
                             break;
                         case 4:
-                            Collection<Stock> topFiveLooser = analyzer.topFiveDowLooser();
-                            topFiveLooser.forEach(stock1 -> System.out.println(stock1.displayStockInfo()));
-                            mainMenu();
+                           topFiveDowLoser();
                             break;
                         case 5:
                             System.out.print("\033[H\033[2J");
@@ -99,7 +89,7 @@ public class DisplayPage {
         mainMenu();
     }
 
-    private void topFiveDowLooser() {
+    private void topFiveDowLoser() {
         Collection<Stock> topFiveLooser = analyzer.topFiveDowLooser();
         topFiveLooser.forEach(stock1 -> System.out.println(stock1.displayStockInfo()));
         mainMenu();
