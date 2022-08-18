@@ -5,6 +5,7 @@ import com.analyzer.model.Stock;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.sql.SQLOutput;
 import java.util.Collection;
 import java.util.Scanner;
 
@@ -50,7 +51,11 @@ public class DisplayPage {
                 } else {
                     switch (number) {
                         case 1:
-                            findStock();
+                            try {
+                                findStock();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
                             break;
                         case 2:
                             displayDynamicView();
@@ -59,7 +64,7 @@ public class DisplayPage {
                             topFiveDowMover();
                             break;
                         case 4:
-                           topFiveDowLoser();
+                            topFiveDowLoser();
                             break;
                         case 5:
                             System.out.print("\033[H\033[2J");
@@ -78,8 +83,13 @@ public class DisplayPage {
     private void findStock() {
         System.out.println("Enter the Ticker or Company name.");
         String ticker = scanner.nextLine();
+
         Stock findStock = analyzer.findStock(ticker);
-        findStock.displayStockInfo();
+        if(findStock!=null){
+            System.out.println(findStock.displayStockInfo()) ;
+        }else{
+            System.out.println( "The stock is not listed in DOW30. Please go to option 1 and make new search");
+        }
         mainMenu();
     }
 

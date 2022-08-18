@@ -3,10 +3,7 @@ package com.analyzer.model;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -38,9 +35,13 @@ public class DowAnalyzer {
     }
 
     //Method for searching the stock
-    public Stock findStock(String ticker) {
-      Stock result=  stockList.stream().filter(stock ->stock.getTicker().equalsIgnoreCase(ticker)).findFirst().orElse(null);
-      return result;
+    public Stock findStock(String tickerOrCompanyName) {
+        //Key word, take ticker or company name (input will be key)
+        Stock result = stockList.stream()
+                .filter(stock -> stock.getTicker().equalsIgnoreCase(tickerOrCompanyName) ||
+                        stock.getCompanyName().toLowerCase().contains(tickerOrCompanyName.toLowerCase()))
+                .findFirst().orElse(null);
+        return result;
     }
 
     //Method for viewing the top five dow mover
