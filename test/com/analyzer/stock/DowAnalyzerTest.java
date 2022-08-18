@@ -33,4 +33,14 @@ public class DowAnalyzerTest {
 
     }
 
+
+    @Test
+    public void findStock_ShouldReturn_CorrectStock_WhenCompanyNameFound(){
+        Stock stockFound= analyzer.findStock("American Express");
+        assertEquals("AXP", stockFound.getTicker());
+
+    }
+
+
+
 }

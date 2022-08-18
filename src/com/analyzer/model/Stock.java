@@ -101,4 +101,5 @@ public class Stock {
                 getTicker(), getCompanyName(), getCurrentPrice(), getPreviousDayPrice(), getVolume(), getOneYearTargetEst()
                 , getEps(), getPeRatio());
     }
+
 }
