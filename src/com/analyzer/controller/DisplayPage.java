@@ -78,8 +78,8 @@ public class DisplayPage {
     private void findStock() {
         System.out.println("Enter the Ticker or Company name.");
         String ticker = scanner.nextLine();
-        Collection<Stock> findStock = analyzer.findStock(ticker);
-        findStock.forEach(stock1 -> System.out.println(stock1.displayStockInfo()));
+        Stock findStock = analyzer.findStock(ticker);
+        findStock.displayStockInfo();
         mainMenu();
     }
 

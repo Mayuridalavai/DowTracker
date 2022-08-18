@@ -38,17 +38,9 @@ public class DowAnalyzer {
     }
 
     //Method for searching the stock
-    public Collection<Stock> findStock(String ticker) {
-        Collection<Stock> result = new ArrayList<>();
-        for (Stock stock : stockList) {
-            if (ticker.equalsIgnoreCase(stock.getTicker()) || ticker.equalsIgnoreCase(stock.getCompanyName())) {
-                result.add(stock);
-            }
-        }
-        if (result.isEmpty()) {
-            System.out.println("The stock is not listed in DOW30. Please go to option 1 and make new search");
-        }
-        return result;
+    public Stock findStock(String ticker) {
+      Stock result=  stockList.stream().filter(stock ->stock.getTicker().equalsIgnoreCase(ticker)).findFirst().orElse(null);
+      return result;
     }
 
     //Method for viewing the top five dow mover
